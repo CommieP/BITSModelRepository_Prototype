@@ -4,7 +4,7 @@ import FormDataSlice from "./reducers/formReducer"
 
 const store = configureStore({
   reducer: {
-    FormDataReducer: FormDataSlice,
+    formData: FormDataSlice,
   },
 });
 

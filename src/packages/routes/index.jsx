@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../HomePage/index"
+import HomePage from "../HomePage"
 
 function RoutesHOC() {
   return (

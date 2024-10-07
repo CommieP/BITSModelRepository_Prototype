@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 
 const HomePage = () => {
-    const formData = useSelector(state => state.FormData);
+    const formData = useSelector(state => state.formData);
     console.log(formData);
     return (
         <>
@@ -11,7 +11,8 @@ const HomePage = () => {
             <br></br>
             <div>
                 <button>Submit New Model</button>
-                <br></br>
+                <br/>
+                <br/>
                 <button>View Models</button>
             </div>
         </>
