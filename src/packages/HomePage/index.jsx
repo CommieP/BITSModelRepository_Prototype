@@ -14,7 +14,7 @@ const HomePage = () => {
             </div>
             <br></br>
             <div>
-                <button onClick={handleNaviagteSubmission}>Submit New Model</button>
+                <button onClick={handleNaviagteSubmission}>Submit the </button>
                 <br/>
                 <br/>
                 <button>View Models</button>
