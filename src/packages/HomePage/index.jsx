@@ -1,8 +1,12 @@
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-    const formData = useSelector(state => state.FormData);
-    console.log(formData);
+    const navigate = useNavigate();
+
+    const handleNaviagteSubmission = () =>{
+        navigate("/submissionPage");
+    }
     return (
         <>
             <div>
@@ -10,8 +14,9 @@ const HomePage = () => {
             </div>
             <br></br>
             <div>
-                <button>Submit New Model</button>
-                <br></br>
+                <button onClick={handleNaviagteSubmission}>Submit the </button>
+                <br/>
+                <br/>
                 <button>View Models</button>
             </div>
         </>
