@@ -1,15 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "../HomePage"
-import SubmissionPage from "../SubmissionPage";
-import PreviewCanvas from "../PreviewCanvas";
+import AboutPage from "../AboutPage";
+import NavBar from "../NavBar";
 
 function RoutesHOC() {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
-        <Route exact path="/" Component={HomePage} />
-        <Route exact path="/submissionPage" Component={SubmissionPage} />
-        <Route exact path="/previewCanvas" Component={PreviewCanvas} />
+        {/* Correct the path to "/about" */}
+        <Route exact path="/about" element={<AboutPage />} />
+        {/* Default route */}
+        <Route exact path="/" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );
