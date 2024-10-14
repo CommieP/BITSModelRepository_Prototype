@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../store/reducers/userReducer";
 
 const LoginSignupPage = () => {
     const [activeTab, setActiveTab] = useState("signup");
@@ -9,6 +14,11 @@ const LoginSignupPage = () => {
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
     const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const [signUpMessage, setSignUpMessage] = useState("");
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // Email validation
     const validateEmail = (email) => {
@@ -44,7 +54,7 @@ const LoginSignupPage = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setFormSubmitted(true); // Flag that the form was submitted
 
@@ -58,8 +68,26 @@ const LoginSignupPage = () => {
         }
 
         if (isEmailValid && isPasswordValid && (activeTab === "login" || isConfirmPasswordValid)) {
-            // TODO: API call goes here
-            console.log("Form submitted successfully:", { email, password });
+            try {
+                if (activeTab === "signup") {
+                    // Firebase sign-up
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    console.log("User signed up successfully");
+                    setSignUpMessage("Profile created successfully!");
+                } else {
+                    // Firebase login
+                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user; 
+                    dispatch(updateUser({uid: user.uid, email: user.email, displayName: user.displayName}));
+                    navigate("/profile");
+                }
+            } catch (error) {
+                if (error.code === "auth/email-already-in-use") {
+                    setSignUpMessage("Email already exists"); // Show error message for existing email
+                } else {
+                    console.error("Error:", error.message);
+                }
+            }
         }
     };
 
@@ -143,6 +171,10 @@ const LoginSignupPage = () => {
                     <button type="submit" className="submitButton">
                         {activeTab === "login" ? "Login" : "Sign Up"}
                     </button>
+
+                    {activeTab === "signup" && signUpMessage && (
+                        <p className="successMessage">{signUpMessage}</p>
+                    )}
                 </form>
             </div>
         </div>

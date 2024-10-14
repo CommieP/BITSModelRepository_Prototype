@@ -6,7 +6,6 @@ body {
   font-family: sans-serif;
 }
 
-/* Mobile-First Styling */
 .navBar {
   display: flex;
   justify-content: space-between;
@@ -16,8 +15,6 @@ body {
   color: white;
 }
 
-
-
 .navBarBranding {
   display: flex;
   align-items: center;
@@ -26,38 +23,37 @@ body {
 .navBarLogoCont {
   width: 2.5rem;
   height: 2.5rem;
-  background-color: #555; /* Placeholder for the logo */
-  margin-right: 0.625rem; /* 10px equivalent */
+  background-color: #555; 
+  margin-right: 0.625rem;
 }
 
 .navBarLogoText {
-  font-size: 1.125rem; /* 18px equivalent */
+  font-size: 1.125rem;
   font-weight: bold;
 }
 
-/* Hidden Menu for Mobile */
 .navBarButtonsCont {
   display: none;
   flex-direction: column;
   position: absolute;
   top: 4.60rem;
-  right: 0; /* Align the menu to the right of the page */
+  right: 0; 
   background-color: #444;
   border-radius: 0.3125rem;
-  width: 100%; /* 5px equivalent */
+  width: 100%; 
 }
 
 .navBarButton {
   background-color: transparent;
   box-sizing: border-box;
   color: white;
-  padding: 1rem; /* 10px equivalent */
-  text-align: right; /* Align text to the right */
+  padding: 1rem; 
+  text-align: right; 
   border: none;
   cursor: pointer;
-  width: 100%; /* Use full width for buttons */
-  display: flex; /* Enable flex for button */
-  justify-content: flex-end; /* Align text to the right */
+  width: 100%; 
+  display: flex; 
+  justify-content: flex-end; 
   text-decoration: none;
 }
 
@@ -69,7 +65,7 @@ body {
 .hamburgerButton {
   background-color: transparent;
   color: white;
-  font-size: 1.5rem; /* 24px equivalent */
+  font-size: 1.5rem; 
   border: none;
   cursor: pointer;
 }
@@ -80,7 +76,7 @@ body {
 }
 
 .navBarButton.active {
-  background-color: #555; /* Highlight the active button */
+  background-color: #555; 
   color: #fff;
 }
 
@@ -112,7 +108,6 @@ body {
   border: none;
   color: white;
   padding: 0.5rem;
-  border-radius: 0.5rem;
 }
 
 .loginSignupCont{
@@ -164,11 +159,21 @@ body {
   font-size: 1rem;
 }
 
+.profileButton{
+  margin-top: 1rem;
+  border: none;
+  background-color: #444;
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+}
 
-/* Desktop View */
-@media (min-width: 48rem) { /* 768px equivalent */
+@media (min-width: 48rem) { 
   .hamburgerButton {
-    display: none; /* Hide the hamburger button on larger screens */
+    display: none; 
   }
 
   .navBarButtonsCont {
@@ -177,11 +182,14 @@ body {
     position: static;
     transform: none;
     background-color: transparent;
-    width: auto;
+    width: 40%;
+    
   }
 
   .navBarButton {
-    padding: 0.625rem 1.25rem; /* 10px 20px equivalent */
+    padding: 0.625rem 1.25rem; 
+    justify-content: center;
+    text-align: center;
   }
   
 }
