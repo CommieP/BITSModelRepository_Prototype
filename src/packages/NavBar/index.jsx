@@ -11,12 +11,16 @@ const NavBar = () => {
 
   // Function to check if a page is active
   const isActive = (path) => {
-    return location.pathname === path ? "active" : "";
+    // Set "About" as active if the current path is "/" or "/about"
+    return location.pathname === path || (path === "/about" && location.pathname === "/")
+      ? "active"
+      : "";
   };
 
   const handleLinkClick = () => {
     setMenuOpen(false); // Close the menu when a link is clicked
   };
+
   return (
     <div className="navBar">
       <div className="navBarBranding">
