@@ -16,6 +16,8 @@ body {
   color: white;
 }
 
+
+
 .navBarBranding {
   display: flex;
   align-items: center;
@@ -56,6 +58,7 @@ body {
   width: 100%; /* Use full width for buttons */
   display: flex; /* Enable flex for button */
   justify-content: flex-end; /* Align text to the right */
+  text-decoration: none;
 }
 
 .navBarButton:hover {
@@ -82,7 +85,9 @@ body {
 }
 
 .page{
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pageTitle{
@@ -109,6 +114,56 @@ body {
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
+
+.loginSignupCont{
+  margin-top: 8rem;
+  background-color: #333;
+  width: 95%;
+}
+
+.tabsCont {
+  width: 100%;
+  background-color: #444;
+  height: 2.5rem;
+}
+
+.tabButton {
+  width: 50%;
+  height: 100%;
+  background-color: #282828;
+  border: none;
+  color: white;
+}
+
+.tabButton.active{
+  background-color: #333;
+  color: white;
+}
+
+.loginSignupForm{
+  padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+}
+
+.formGroup{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem ;
+}
+
+.submitButton{
+  border: none;
+  background-color: #282828;
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+}
+
 
 /* Desktop View */
 @media (min-width: 48rem) { /* 768px equivalent */
