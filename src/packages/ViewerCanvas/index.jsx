@@ -7,7 +7,15 @@ import { useLoader } from '@react-three/fiber';
 
 const Model = ({ modelUrl }) => {
     const gltf = useLoader(GLTFLoader, modelUrl);
-    return <primitive object={gltf.scene} scale={0.5} />;
+    console.log("Model Loaded:", gltf);
+    
+    return (
+        <primitive
+            object={gltf.scene}
+            scale={10} // Adjust scale if necessary
+            position={[0, 0, 0]} // Adjust position if the model is far off the view
+        />
+    );
 };
 
 const ViewerCanvas = () => {
@@ -15,10 +23,14 @@ const ViewerCanvas = () => {
     const { modelUrl } = location.state; // Get the model URL from state
 
     return (
-        <div className="viewer-page">
+        <div className="viewerPage">
             <Canvas>
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 10]} />
+                <mesh>
+                    <boxGeometry attach="geometry" args={[1, 1, 1]} />
+                    <meshStandardMaterial attach="material" color="#6be092" />
+                </mesh>
                 <Suspense> {/* Suspense with fallback */}
                     <Model modelUrl={modelUrl} />
                 </Suspense>
