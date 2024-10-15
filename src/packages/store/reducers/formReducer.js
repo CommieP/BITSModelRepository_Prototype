@@ -3,29 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 const FormDataSlice = createSlice({
     name: "FormData",
     initialState: {
-        firstName:"",
-        lastName: "",
+        title: "",
         file: null
     },
     reducers: {
-        setFirstName: (state, action) => {
-            state.firstName = action.payload;
-        },
-        setLastName: (state, action) => {
-            state.lastName = action.payload;
+        setTitle: (state, action) => {
+            state.title = action.payload;
         },
         setFile: (state, action) => {
             state.file = action.payload;
         },
         clearFormData: (state) => {
-            state.firstName = "";
-            state.lastName = "";
+            state.title = "";
             state.file = null;
         },
 
     }
 })
 
-export const {setFirstName, setLastName, setFile, clearFormData} = FormDataSlice.actions;
+export const {setTitle, setFile, clearFormData} = FormDataSlice.actions;
 
 export default FormDataSlice.reducer;

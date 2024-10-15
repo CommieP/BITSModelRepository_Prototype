@@ -8,6 +8,10 @@ const ProfilePage = ({ email }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleSubmission = () =>{
+    navigate("/submission");
+  }
+
   const handleLogout = async () => {
     try {
       // Firebase sign out
@@ -32,7 +36,7 @@ const ProfilePage = ({ email }) => {
         Logout
       </button>
 
-      <button className="profileButton">
+      <button className="profileButton" onClick={handleSubmission}>
         Upload Model
       </button>
     </div>
