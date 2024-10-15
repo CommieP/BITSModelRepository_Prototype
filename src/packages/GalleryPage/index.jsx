@@ -26,6 +26,7 @@ const GalleryPage = () => {
         name: file.name,
         url,
       });
+      console.log(url);
     }
 
     return fileList;

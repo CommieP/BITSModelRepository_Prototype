@@ -1,7 +1,8 @@
 [
     {
         "origin": [
-            "http://localhost:5174"
+            "https://bits3dmodelrepository.netlify.app/viewer",
+            "http://localhost:5173"
         ],
         "method": [
             "GET",
