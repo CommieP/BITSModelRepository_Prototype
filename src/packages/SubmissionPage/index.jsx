@@ -1,18 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFirstName, setLastName, setFile, clearFormData } from '../store/reducers/formReducer'; // Import the actions
+import { setTitle, setFile, clearFormData } from '../store/reducers/formReducer'; // Import the actions
 import { useNavigate } from 'react-router-dom';
+import { storage } from '../firebaseConfig';
+import { ref, uploadBytes } from 'firebase/storage';
 
-const SubmissionPage = () => {
+const SubmissionPage = ({ user }) => {
     const formData = useSelector(state => state.formData); // Access the form data from the store
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleFirstNameChange = (e) => {
-        dispatch(setFirstName(e.target.value));
-    };
-
-    const handleLastNameChange = (e) => {
-        dispatch(setLastName(e.target.value));
+    const handleTitleChange = (e) => {
+        dispatch(setTitle(e.target.value));
     };
 
     const handleFileChange = (e) => {
@@ -31,13 +29,24 @@ const SubmissionPage = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Perform your submission logic here (e.g., send data to an API)
-        console.log("Form submitted:", formData);
+        try {
+            if (formData.file) {
+                const fileRef = ref(storage, `models/${user.uid}/${formData.title}`); // Reference to Firebase storage
 
-        // Clear the store after submission
-        dispatch(clearFormData());
+                // Upload the file to Firebase storage
+                const snapshot = await uploadBytes(fileRef, formData.file);
+                console.log("File uploaded successfully:", snapshot);
+
+                dispatch(clearFormData());
+            } else {
+
+            }
+        } catch {
+
+        }
+
     };
 
     const handlePreview = () => {
@@ -46,25 +55,14 @@ const SubmissionPage = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='page'>
+            <form onSubmit={handleSubmit} className='submissionCont'>
                 <div>
-                    <label>First Name:</label>
+                    <label>Title</label>
                     <input
                         type="text"
-                        value={formData.firstName}
-                        onChange={handleFirstNameChange}
-                        required
-                    />
-                </div>
-                <br></br>
-                <br></br>
-                <div>
-                    <label>Last Name:</label>
-                    <input
-                        type="text"
-                        value={formData.lastName}
-                        onChange={handleLastNameChange}
+                        value={formData.title}
+                        onChange={handleTitleChange}
                         required
                     />
                 </div>

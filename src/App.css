@@ -159,7 +159,7 @@ body {
   font-size: 1rem;
 }
 
-.profileButton{
+.profileButton {
   margin-top: 1rem;
   border: none;
   background-color: #444;
@@ -169,6 +169,11 @@ body {
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   font-size: 1rem;
+}
+
+.submissionCont {
+  width: 50%;
+  margin-top: 5rem;
 }
 
 @media (min-width: 48rem) { 
