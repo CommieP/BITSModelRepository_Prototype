@@ -176,6 +176,10 @@ body {
   margin-top: 5rem;
 }
 
+.viewerPage {
+  height: 100vh;
+}
+
 @media (min-width: 48rem) { 
   .hamburgerButton {
     display: none; 
